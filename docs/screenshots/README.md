@@ -7,3 +7,5 @@ Captured from the running authenticated Replit workspace using synthetic mini bu
 - approval-review.png: exact diagnostic parameters and explicit approve/reject controls; the screenshot request was subsequently rejected without execution.
 
 No Secrets panels, API tokens or passwords are included. These screenshots supplement the required video; they do not replace it.
+
+- langsmith-trace.png — actual private LangSmith trace tree for Replit investigation of synthetic Jenkins build #3. No trace sharing permission was enabled.

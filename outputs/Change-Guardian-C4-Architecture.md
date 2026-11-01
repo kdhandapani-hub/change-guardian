@@ -12,12 +12,14 @@ C4Context
   System_Ext(jenkins, "Jenkins on Mac mini", "One Postman verification pipeline and native MCP")
   System_Ext(edge, "ngrok", "Authenticated outbound tunnel; trusted intermediary")
   System_Ext(model, "Fireworks AI", "Tool-calling model inference")
+  System_Ext(tracing, "LangSmith", "Private investigation observability")
   System_Ext(context, "Synthetic analyser snapshot", "Affected services, change ID and CI mapping")
   Rel(engineer, guardian, "Signs in, filters services, reviews and approves", "HTTPS")
   Rel(guardian, edge, "Authenticated MCP and artifact requests", "HTTPS")
   Rel(jenkins, edge, "Connects outbound through local ngrok agent", "Encrypted tunnel")
   Rel(edge, jenkins, "Relays allowed authenticated requests", "Established tunnel")
   Rel(guardian, model, "Requests advisory investigation", "HTTPS")
+  Rel(guardian, tracing, "Sends synthetic investigation spans and scope metadata", "HTTPS")
   Rel(context, guardian, "Supplies versioned synthetic context", "JSON")
 ```
 
@@ -33,6 +35,7 @@ C4Container
   }
   ContainerDb(db, "Application state", "PostgreSQL", "Approvals, task records and agent checkpoints")
   System_Ext(model, "Fireworks AI", "Inference API")
+  System_Ext(tracing, "LangSmith", "Graph, model and tool traces")
   System_Ext(edge, "ngrok edge", "Gateway secret and narrow route policy; terminates TLS")
   System_Boundary(mini, "Mac mini — simulated on-premises") {
     Container(connector, "ngrok connector", "User login service", "Initiates outbound encrypted tunnel")
@@ -44,6 +47,7 @@ C4Container
   Rel(ui, backend, "Reads evidence and submits reviewed actions", "Same-origin HTTP API")
   Rel(backend, db, "Persists state", "PostgreSQL connection")
   Rel(backend, model, "Investigates evidence", "HTTPS")
+  Rel(backend, tracing, "Exports private investigation traces", "HTTPS")
   Rel(backend, edge, "Uses gateway secret and Jenkins API token", "HTTPS MCP / REST")
   Rel(connector, edge, "Connects outbound", "Encrypted tunnel")
   Rel(edge, connector, "Relays accepted requests", "Established tunnel")
@@ -68,6 +72,7 @@ flowchart TD
   Approval -->|Explicit human approval + atomic claim| Executor[Separate diagnostic executor credential]
   Executor --> MCP
   Approval --> DB[(PostgreSQL / local SQLite)]
+  Graph -.-> Tracing[LangSmith: nested graph, model and tool spans]
   Graph --> Checkpoints[(Persistent LangGraph checkpoints)]
 ```
 
@@ -99,3 +104,5 @@ sequenceDiagram
 ```
 
 Uncertain submissions are marked UNKNOWN and only reconciled. The edge, app authentication and Jenkins authorization are independent boundaries. No browser receives gateway, Jenkins or model keys.
+
+LangSmith observes the read-only investigation, not the diagnostic execution/approval sequence. Trace contents are synthetic evidence, prompts and responses; service credentials are not trace metadata. Missing/zero model pricing is not a billing measurement.

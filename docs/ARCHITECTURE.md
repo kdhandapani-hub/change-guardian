@@ -10,6 +10,7 @@ The working system uses one pipeline and one agent. The UI/backend runs in a Rep
 | Evidence normalizer | Collection/change provenance, expected checks, immutable outcomes and coverage |
 | One LangGraph agent | Read-only advisory investigation with bounded tools |
 | Approval executor | Exact human-approved diagnostic, same pipeline and parent linkage |
+| LangSmith | Private investigation traces, model/tool spans, timing and token usage |
 | PostgreSQL | Cloud approvals, task records and LangGraph checkpoints |
 | Browser | Display and review; never receives service/API secrets |
 
@@ -34,3 +35,7 @@ ngrok terminates HTTPS and is trusted with synthetic payloads and dedicated API 
 Service and status filters operate on the selected build. Overview metrics retain the whole run's context. Needs attention includes failed and unverified services. Recent failures shows failures in the loaded run, not an enterprise incident stream; severity is not classified. This keeps failures and coverage gaps visible without inventing criticality.
 
 See the [C4 diagrams](../outputs/Change-Guardian-C4-Architecture.md). Production publishing, SSO, rate-limited multi-user access and durable worker queues are future work.
+
+## Investigation observability
+
+The Replit backend sends the single LangGraph investigation to LangSmith over HTTPS. Nested spans capture reason/tool steps, Fireworks model calls and bounded synthetic evidence. Build number, environment, selected services/suite, change ID and collection revision correlate the trace with Jenkins artifacts. LangSmith has no Jenkins execution permission. Its credential stays in Replit Secrets; no trace is publicly shared. Local tracing defaults off. See [configuration and validation](OBSERVABILITY.md).

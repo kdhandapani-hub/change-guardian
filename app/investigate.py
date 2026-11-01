@@ -1,5 +1,5 @@
 """One tool-using model in a bounded, checkpointed LangGraph. No Jenkins write tools."""
-import asyncio, json, os, sqlite3, time
+import asyncio, json, os, sqlite3, time, uuid
 from typing import Annotated, TypedDict
 from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage, AIMessage
 from langchain_core.tools import StructuredTool
@@ -81,6 +81,15 @@ async def run_investigation(client,build_number,context,thread_id,model=None):
     graph.add_edge(START,"reason");graph.add_conditional_edges("reason",route);graph.add_edge("tools","reason")
     (ROOT/"runtime").mkdir(exist_ok=True)
     start=time.monotonic()
+    graph_run_id=uuid.uuid4()
+    # Trace only non-secret scope metadata; credentials remain in backend clients.
+    trace_config={"run_id":graph_run_id,"run_name":"change-guardian-investigation",
+        "tags":["change-guardian","synthetic","read-only-investigation"],
+        "metadata":{"build_number":build_number,"environment":plan["environment"],
+                    "services":plan["services"],"suite":plan["suite"],"change_id":plan["change_id"],
+                    "collection_sha256":plan.get("collection_sha256"),
+                    "deployment":"replit" if os.getenv("REPL_ID") else "local"},
+        "configurable":{"thread_id":thread_id},"recursion_limit":16}
     if os.environ.get("DATABASE_URL"):
         from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
         saver_context=AsyncPostgresSaver.from_conn_string(os.environ["DATABASE_URL"])
@@ -89,8 +98,8 @@ async def run_investigation(client,build_number,context,thread_id,model=None):
     async with saver_context as saver:
         if os.environ.get("DATABASE_URL"): await saver.setup()
         compiled=graph.compile(checkpointer=saver)
-        final=await compiled.ainvoke({"messages":[SystemMessage(PROMPT),HumanMessage(json.dumps(result))],"calls":0,"tokens":0,"deadline":start+120,"error":""},config={"configurable":{"thread_id":thread_id},"recursion_limit":16})
+        final=await compiled.ainvoke({"messages":[SystemMessage(PROMPT),HumanMessage(json.dumps(result))],"calls":0,"tokens":0,"deadline":start+120,"error":""},config=trace_config)
     last=final["messages"][-1]
     complete=isinstance(last,AIMessage) and not last.tool_calls and not final.get("error")
-    result["investigation"]={"status":"AI_COMPLETE" if complete else "AI_INCOMPLETE","text":last.content if complete else final.get("error") or "Investigation call limit reached; engineer review required.","tools_used":[c["name"] for m in final["messages"] for c in getattr(m,"tool_calls",[])],"model_calls":final["calls"],"tokens":final["tokens"],"elapsed_seconds":round(time.monotonic()-start,2),"thread_id":thread_id,"advisory":True}
+    result["investigation"]={"status":"AI_COMPLETE" if complete else "AI_INCOMPLETE","text":last.content if complete else final.get("error") or "Investigation call limit reached; engineer review required.","tools_used":[c["name"] for m in final["messages"] for c in getattr(m,"tool_calls",[])],"model_calls":final["calls"],"tokens":final["tokens"],"elapsed_seconds":round(time.monotonic()-start,2),"thread_id":thread_id,"trace_id":str(graph_run_id) if os.getenv("LANGSMITH_TRACING", "").lower()=="true" else None,"advisory":True}
     return result

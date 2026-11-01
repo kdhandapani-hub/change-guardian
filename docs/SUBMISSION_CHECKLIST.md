@@ -13,3 +13,5 @@ Source: Week 3 Project Handout (Oct 2026), page 10. Handout deadline: certificat
 | Final form | https://forms.gle/waBYFkkf5xxmcouV9 — not submitted by this work. |
 
 Keep the public package separate from ignored runtime credentials, exported personal memory, host-specific operations notes and generated local state. The report distinguishes implemented features, observed results and future work.
+
+- [x] LangSmith real investigation trace verified (root + nested model/tools, matching build #3 metadata); configuration and data boundary documented.

@@ -33,3 +33,9 @@ Before real organizational use, replace synthetic inventories and CI context, va
 ## Sidebar acceptance checks
 
 Live browser checks against mini build 3 verified Passed → accounts; Failed → payments; Not tested → positions; Needs attention → payments and positions; Recent failures → payments with HTTP 500/assertion detail; positions service selection → one matching row. The original CHECKS_FAILED verdict remained unchanged across filters. A synthetic exact-scope request was captured pending and rejected without execution. Screenshots show the running Replit app.
+
+## LangSmith acceptance
+
+A real Replit investigation of Jenkins build #3 (demo-qa, accounts/payments, smoke) completed with AI_COMPLETE: 2 model calls, 4,154 reported tokens and 19.38 seconds. LangSmith read-back confirmed the completed root run, no root/child errors, two model spans and all three read-tool spans (logs, tests, comparable history), with matching scope metadata. The immutable verdict remained CHECKS_FAILED and positions remained NOT_TESTED.
+
+The LangSmith API returned end_time and error=null; all 11 recorded spans, including the root, had no errors. This acceptance trace was run from the Replit shell against the same backend investigation code and real mini evidence. The managed dashboard workflow was restarted separately with the saved tracing secret enabled. Trace export is not an approval/execution permission or a new agent. Missing automatic Fireworks pricing is not evidence of zero billing.
