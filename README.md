@@ -32,7 +32,7 @@ flowchart LR
   Runner --> APIs[Synthetic service APIs]
 ```
 
-[C4 diagrams](outputs/Change-Guardian-C4-Architecture.md) · [Architecture decisions](docs/ARCHITECTURE.md) · [Setup](docs/SETUP.md) · [Validation](docs/EVALUATION.md)
+[C4 diagrams](outputs/Change-Guardian-C4-Architecture.md) · [Architecture decisions](docs/ARCHITECTURE.md) · [Setup](docs/SETUP.md) · [Validation](docs/EVALUATION.md) · [Reviewer walkthrough](docs/WALKTHROUGH.md)
 
 The working cloud app is a **Replit workspace preview**, not an always-on published deployment. The Mac mini simulates on-premises execution. No production organization systems are connected. ngrok is a trusted TLS-terminating intermediary; gateway and Jenkins authentication are independent.
 

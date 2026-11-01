@@ -15,3 +15,11 @@ Source: Week 3 Project Handout (Oct 2026), page 10. Handout deadline: certificat
 Keep the public package separate from ignored runtime credentials, exported personal memory, host-specific operations notes and generated local state. The report distinguishes implemented features, observed results and future work.
 
 - [x] LangSmith real investigation trace verified (root + nested model/tools, matching build #3 metadata); configuration and data boundary documented.
+
+## Release preparation — November 1, 2026
+
+- Application suite: 31 tests passed again.
+- Reviewer walkthrough: docs/WALKTHROUGH.md includes exact flow, on-demand reconciliation and code reading order.
+- Public GitHub repository: owner explicitly approved public code/documentation/synthetic screenshots; upload validation pending.
+- Replit published deployment: pending configuration and pricing review; workspace preview is not a published deployment.
+- Recording and reviewer access to Google Doc remain outstanding.
