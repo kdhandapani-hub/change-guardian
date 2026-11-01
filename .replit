@@ -3,6 +3,7 @@ entrypoint = "app/cloud.py"
 modules = ["python-3.12"]
 
 [deployment]
+deploymentTarget = "gce"
 build = ["sh", "-c", "pip install -r requirements-cloud.txt"]
 run = ["sh", "-c", "python -m app.cloud"]
 
