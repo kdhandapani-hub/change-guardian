@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "environments": {
+    "demo-dev": "http://127.0.0.1:8091",
+    "demo-qa": "http://127.0.0.1:8092"
+  },
+  "services": [
+    "accounts",
+    "payments",
+    "positions"
+  ],
+  "suites": [
+    "health",
+    "smoke",
+    "regression"
+  ]
+}

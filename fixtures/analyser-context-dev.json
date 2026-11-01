@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "change_id": "DEMO-CHG-001",
+  "environment": "demo-dev",
+  "impact_source": "Synthetic manifest comparison; not a confirmed production impact assessment",
+  "affected_services": [
+    "accounts",
+    "payments",
+    "positions"
+  ],
+  "services": [
+    {
+      "service_id": "accounts",
+      "parentCI": "DEMO-ES",
+      "altCI": "DEMO-ACCOUNTS",
+      "links": {
+        "observability": "https://example.invalid/observability/accounts"
+      }
+    },
+    {
+      "service_id": "payments",
+      "parentCI": "DEMO-ES",
+      "altCI": "DEMO-PAYMENTS",
+      "links": {
+        "observability": "https://example.invalid/observability/payments"
+      }
+    },
+    {
+      "service_id": "positions",
+      "parentCI": "DEMO-ES",
+      "altCI": "DEMO-POSITIONS",
+      "links": {
+        "observability": "https://example.invalid/observability/positions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+pipeline {
+  agent any
+  options { disableConcurrentBuilds(); timeout(time: 5, unit: 'MINUTES') }
+  parameters {
+    choice(name: 'RUN_PURPOSE', choices: ['verification', 'diagnostic'], description: 'Execution purpose')
+    string(name: 'PARENT_BUILD', defaultValue: '', description: 'Original verification build for diagnostics')
+    string(name: 'REQUEST_ID', defaultValue: '', description: 'Diagnostic approval ID')
+    string(name: 'CHANGE_ID', defaultValue: 'DEMO-CHG-001', description: 'Synthetic change reference')
+    choice(name: 'ENVIRONMENT', choices: ['demo-dev', 'demo-qa'], description: 'Synthetic target')
+    choice(name: 'SUITE', choices: ['health', 'smoke', 'regression', 'full'], description: 'Test scope')
+    string(name: 'SERVICES', defaultValue: 'all', description: 'all or accounts,payments,positions')
+  }
+  stages {
+    stage('Checkout') { steps { deleteDir(); checkout scm } }
+    stage('Run selected checks') {
+      steps {
+        // Configure this job at the Week-3 repository root. CLI and synthetic target must exist on the worker.
+        sh 'python3 -m scripts.run_collection --environment "$ENVIRONMENT" --services "$SERVICES" --suite "$SUITE"'
+      }
+    }
+  }
+  post {
+    always {
+      junit testResults: 'runtime/reports/results.xml', allowEmptyResults: false
+      archiveArtifacts artifacts: 'runtime/reports/*', allowEmptyArchive: true
+    }
+  }
+}

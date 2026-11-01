@@ -1,0 +1,224 @@
+{
+  "info": {
+    "name": "Change Guardian Synthetic Verification",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "accounts/health",
+      "item": [
+        {
+          "name": "accounts/health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/health"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "accounts/smoke",
+      "item": [
+        {
+          "name": "accounts/smoke",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/smoke"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "accounts/regression",
+      "item": [
+        {
+          "name": "accounts/regression",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/regression"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "payments/health",
+      "item": [
+        {
+          "name": "payments/health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/payments/health"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "payments/smoke",
+      "item": [
+        {
+          "name": "payments/smoke",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/payments/smoke"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "payments/regression",
+      "item": [
+        {
+          "name": "payments/regression",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/payments/regression"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positions/health",
+      "item": [
+        {
+          "name": "positions/health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/positions/health"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positions/smoke",
+      "item": [
+        {
+          "name": "positions/smoke",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/positions/smoke"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positions/regression",
+      "item": [
+        {
+          "name": "positions/regression",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/positions/regression"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Synthetic response\", () => pm.expect(pm.response.json().synthetic).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

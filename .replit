@@ -1,0 +1,20 @@
+run = "python -m app.cloud"
+entrypoint = "app/cloud.py"
+modules = ["python-3.12"]
+
+[deployment]
+build = ["sh", "-c", "pip install -r requirements-cloud.txt"]
+run = ["sh", "-c", "python -m app.cloud"]
+
+[[ports]]
+localPort = 8090
+externalPort = 80
+
+[workflows]
+runButton = "Guardian"
+[[workflows.workflow]]
+name = "Guardian"
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -m app.cloud"
+waitForPort = 8090
