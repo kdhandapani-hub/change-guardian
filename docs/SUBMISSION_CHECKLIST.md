@@ -23,3 +23,11 @@ Keep the public package separate from ignored runtime credentials, exported pers
 - Public GitHub repository: owner explicitly approved public code/documentation/synthetic screenshots; uploaded and verified: https://github.com/kdhandapani-hub/change-guardian .
 - Replit published deployment: published November 1, 2026 at https://change-guardian.replit.app/ on the owner-approved Reserved VM; health, owner login, protected API, real Jenkins evidence, AI investigation and LangSmith trace read-back validated.
 - Recording and reviewer access to Google Doc remain outstanding.
+
+## Final document and recording preparation
+
+- [x] Report consolidated and finalized against handout page 10: overview, inputs, actual coding prompts, iterations and learnings; measured results and limits clearly distinguished.
+- [x] Timed 4:45 demo script prepared with 472 words of narration, click sequence and honest slow-run fallback.
+- [ ] Record the live demonstration, verify duration at most 5:00 and add its link to SUBMISSION.md and the Google Doc.
+- [ ] Enable appropriate reviewer viewing access for the Google Doc and video; verify links.
+- [ ] Submit the required links in the cohort form.

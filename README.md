@@ -84,7 +84,7 @@ These are individual acceptance observations, not a statistical reliability benc
 
 - [Google Doc project report](https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit) and [versioned report source](docs/SUBMISSION.md): overview, datasets, agent framework, coding prompts, iterations and learnings. The Google Doc is currently owner-private; grant reviewer access before submitting.
 - [C4 context, containers, components and approval sequence](outputs/Change-Guardian-C4-Architecture.md).
-- [Demo recording script](docs/DEMO_SCRIPT.md), designed for under five minutes.
+- [Demo recording script](docs/DEMO_SCRIPT.md): 4:45 click-by-click walkthrough with 472 words of narration and a slow-run fallback.
 - [Submission checklist](docs/SUBMISSION_CHECKLIST.md) and screenshots under `docs/screenshots/`.
 
 The handout requires a Google Doc, a video of five minutes or less, and GitHub code. Screenshots are supporting evidence, not a replacement for the required video. The recording and final form submission remain the author's steps.
