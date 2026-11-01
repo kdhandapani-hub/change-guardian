@@ -5,7 +5,7 @@ Source: Week 3 Project Handout (Oct 2026), page 10. Handout deadline: certificat
 | Item | Requirement / status |
 |---|---|
 | GitHub code | Required. Include application, collection, pipeline, safe example config, tests and README. |
-| Google Doc | Required. Include overview, datasets, vibe-coding prompts, iterations and learnings. Created: https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit (owner-private; reviewer sharing pending). Versioned source: SUBMISSION.md. |
+| Google Doc | Required. Include overview, datasets, vibe-coding prompts, iterations and learnings. Created: https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit (owner-private; reviewer sharing pending). The report is maintained only in Google Drive. |
 | Video | Required, five minutes or less. Recording is still outstanding; use DEMO_SCRIPT.md. |
 | Screenshots | Not explicitly required on page 10. Include selected synthetic UI/evidence screenshots as supporting material. |
 | Architecture | Include current C4 artifacts in GitHub and explain them in the report/demo. |
@@ -28,6 +28,6 @@ Keep the public package separate from ignored runtime credentials, exported pers
 
 - [x] Report consolidated and finalized against handout page 10: overview, inputs, actual coding prompts, iterations and learnings; measured results and limits clearly distinguished.
 - [x] Timed 4:45 demo script prepared with 472 words of narration, click sequence and honest slow-run fallback.
-- [ ] Record the live demonstration, verify duration at most 5:00 and add its link to SUBMISSION.md and the Google Doc.
+- [ ] Record the live demonstration, verify duration at most 5:00 and add its link to the Google Doc.
 - [ ] Enable appropriate reviewer viewing access for the Google Doc and video; verify links.
 - [ ] Submit the required links in the cohort form.

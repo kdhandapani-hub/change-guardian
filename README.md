@@ -82,7 +82,7 @@ These are individual acceptance observations, not a statistical reliability benc
 
 ## Submission artifacts
 
-- [Google Doc project report](https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit) and [versioned report source](docs/SUBMISSION.md): overview, datasets, agent framework, coding prompts, iterations and learnings. The Google Doc is currently owner-private; grant reviewer access before submitting.
+- [Google Doc project report](https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit): overview, datasets, agent framework, coding prompts, iterations and learnings. The submission report is maintained only in Google Drive; grant reviewer access before submitting.
 - [C4 context, containers, components and approval sequence](outputs/Change-Guardian-C4-Architecture.md).
 - [Demo recording script](docs/DEMO_SCRIPT.md): 4:45 click-by-click walkthrough with 472 words of narration and a slow-run fallback.
 - [Submission checklist](docs/SUBMISSION_CHECKLIST.md) and screenshots under `docs/screenshots/`.

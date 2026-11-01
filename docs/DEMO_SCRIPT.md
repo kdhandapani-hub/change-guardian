@@ -59,4 +59,4 @@ Say: “The application has 31 passing tests, plus real Jenkins, Postman, MCP an
 
 ## After recording
 
-Check that the video is no longer than 5:00, audio is clear and no credentials are visible. If you shortened waits, label the edit. Add the recording URL to docs/SUBMISSION.md and the Google Doc; confirm viewer access before submitting the cohort form. Do not include the dashboard password in either public artifact.
+Check that the video is no longer than 5:00, audio is clear and no credentials are visible. If you shortened waits, label the edit. Add the recording URL to the Google Doc; confirm viewer access before submitting the cohort form. Do not include the dashboard password in either public artifact.
