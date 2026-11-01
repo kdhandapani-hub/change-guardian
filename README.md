@@ -32,7 +32,7 @@ flowchart LR
   Runner --> APIs[Synthetic service APIs]
 ```
 
-[C4 diagrams](outputs/Change-Guardian-C4-Architecture.md) · [Architecture decisions](docs/ARCHITECTURE.md) · [Setup](docs/SETUP.md) · [Validation](docs/EVALUATION.md) · [Reviewer walkthrough](docs/WALKTHROUGH.md)
+[C4 diagrams](outputs/Change-Guardian-C4-Architecture.md) · [Architecture decisions](docs/ARCHITECTURE.md) · [Setup](docs/SETUP.md) · [Validation](docs/EVALUATION.md) · [Walkthrough](docs/WALKTHROUGH.md) · [Five-minute demo script](docs/DEMO_SCRIPT.md)
 
 The app is published at **https://change-guardian.replit.app/** on a Replit Reserved VM. Owner sign-in is required; credentials are supplied privately. The Mac mini simulates on-premises execution. No production organization systems are connected. ngrok is a trusted TLS-terminating intermediary; gateway and Jenkins authentication are independent.
 
@@ -122,15 +122,6 @@ The history helps locate investigations and compare individual executions. A com
 </details>
 
 LangSmith is used for **tracing**, with prompts, responses, tool evidence, tokens and timing. No LangSmith evaluation dataset, judge or experiment scores have been configured. The 31 application tests are a separate validation layer. These individual runs do not establish statistical accuracy, reliability or p95 latency. See [observability and data boundaries](docs/OBSERVABILITY.md) and [evaluation coverage](docs/EVALUATION.md).
-
-## Submission artifacts
-
-- [Google Doc project report](https://docs.google.com/document/d/1V0xOeFbNsVCREB5sPoXMB27yfILO4J1_OZ3yt3sV4iQ/edit): overview, datasets, agent framework, coding prompts, iterations and learnings. The submission report is maintained only in Google Drive; grant reviewer access before submitting.
-- [C4 context, containers, components and approval sequence](outputs/Change-Guardian-C4-Architecture.md).
-- [Demo recording script](docs/DEMO_SCRIPT.md): 4:45 click-by-click walkthrough with 472 words of narration and a slow-run fallback.
-- [Submission checklist](docs/SUBMISSION_CHECKLIST.md) and screenshots under `docs/screenshots/`.
-
-The handout requires a Google Doc, a video of five minutes or less, and GitHub code. Screenshots are supporting evidence, not a replacement for the required video. The recording and final form submission remain the author's steps.
 
 ## Scope and limitations
 
