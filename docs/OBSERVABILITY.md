@@ -4,7 +4,7 @@ LangSmith is the selected observability platform. Langfuse is not integrated. Th
 
 ## Configuration
 
-Set LANGSMITH_API_KEY privately in Replit Secrets. Configure LANGSMITH_TRACING=true, LANGSMITH_PROJECT=change-guardian and the API endpoint for the account region (US: https://api.smith.langchain.com). Set LANGSMITH_WORKSPACE_ID if required by the key. The validated Replit account is agent-based: LANGSMITH_AGENT_ID=change-guardian and LANGSMITH_AGENT_ENVIRONMENT=local (the workspace preview environment, not a published production deployment). LANGSMITH_PROJECT is a legacy project-workspace setting; agent addressing routes this account. Use your own actual agent/environment in another account. Restart the Guardian workflow after changing environment secrets.
+Set LANGSMITH_API_KEY privately in Replit Secrets. Configure LANGSMITH_TRACING=true, LANGSMITH_PROJECT=change-guardian and the API endpoint for the account region (US: https://api.smith.langchain.com). Set LANGSMITH_WORKSPACE_ID if required by the key. The validated Replit account is agent-based: LANGSMITH_AGENT_ID=change-guardian and LANGSMITH_AGENT_ENVIRONMENT=local (an account routing label also used by the published app; it does not describe the host location). LANGSMITH_PROJECT is a legacy project-workspace setting; agent addressing routes this account. Use your own actual agent/environment in another account. Restart the Guardian workflow after changing environment secrets.
 
 The LangChain/LangGraph integration records nested spans automatically. The graph has an explicit run ID/name and tags: change-guardian, synthetic, read-only-investigation. Scope metadata contains build number, environment, selected services/suite, change ID and collection SHA. The response includes the candidate trace ID when tracing is configured; the ID alone does not prove successful ingestion.
 
@@ -31,3 +31,9 @@ References: https://docs.langchain.com/langsmith/trace-with-langgraph and https:
 On November 1, 2026, the published Reserved VM app passed its public health check (HTTP 200), rejected unauthenticated API access, accepted owner form sign-in with a Secure session cookie, and loaded real Jenkins build #3 through the authenticated mini connection. A production AI investigation completed with AI_COMPLETE in 2 model calls, 4,277 reported tokens and 22.32 seconds. The verdict remained CHECKS_FAILED and positions remained NOT_TESTED. LangSmith read-back confirmed a completed root trace with no root error and nested spans. No diagnostic was approved or triggered during publishing validation.
 
 Published URL: https://change-guardian.replit.app/ . Provider billing is separate from observed token usage.
+
+## Published trace evidence and cost estimate
+
+The November 1 trace (`263d069b-f68c-42e4-9338-d922da206edf`) is now documented with [the expanded graph](screenshots/langsmith-production-trace.png), [returned JUnit evidence](screenshots/langsmith-tool-result.png), and [investigation history](screenshots/langsmith-runs.png). The graph root took 21.89 seconds; the application measured 22.32 seconds over a wider boundary. The two model spans took 7.55 and 12.79 seconds, with 1,451 and 2,826 tokens respectively. The three read tools took 0.21, 0.16 and 0.64 seconds.
+
+LangSmith displays an estimated $0.0239259 for this trace. This is a platform estimate, not a reconciled Fireworks bill. Do not treat the single-thread summary's P50 as a benchmark for the application. No LangSmith evaluation datasets, judges or experiments have been configured; tracing and application tests do not establish model accuracy scores.

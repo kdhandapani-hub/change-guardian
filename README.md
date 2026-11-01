@@ -78,7 +78,50 @@ Local dashboard: `http://127.0.0.1:8090/`. Build numbers belong to their Jenkins
 | Published app investigation, November 1 | AI_COMPLETE; 2 calls, 4,277 tokens, 22.32 seconds; health/login/Jenkins access verified |
 | Application tests | 31 passing tests; model doubles are separate from live inference |
 
-These are individual acceptance observations, not a statistical reliability benchmark. Provider dollar cost and p95 latency were not measured. [Full evaluation and limitations](docs/EVALUATION.md).
+These are individual acceptance observations, not a statistical reliability benchmark. Provider-billed dollar cost and p95 latency were not measured. The LangSmith estimate below is separate from provider billing. [Full evaluation and limitations](docs/EVALUATION.md).
+
+## Walk through the evidence
+
+These are captures of the working app and actual LangSmith traces using synthetic data. Click an image for a larger view.
+
+| Review a failure | Review a diagnostic request |
+|---|---|
+| ![Payments failure detail](docs/screenshots/failure-detail.png) | ![Human approval review](docs/screenshots/approval-review.png) |
+| Payments returned HTTP 500; the assertion evidence explains the deterministic failure. | Exact environment, service, suite and parent build are shown before approval. This pictured request was rejected without execution. |
+
+### LangSmith: see the agent's decisions and evidence
+
+Clicking **Investigate with AI** starts the traced graph. The model first receives the selected run context, chooses from three read-only tools, receives their results as tool messages, and then writes its advisory findings. Jenkins execution is a separate, human-approved application action; this trace does not grant the model a build-trigger tool.
+
+![Published investigation with two model calls and three tools](docs/screenshots/langsmith-production-trace.png)
+
+The November 1 published-app investigation shows the two model calls around the tool step. LangSmith labels the OpenAI-compatible client span `ChatOpenAI`; inference is served by **Fireworks AI**.
+
+| Measurement from this investigation | Observed value |
+|---|---|
+| Model calls / reported tokens | 2 / 4,277 |
+| LangSmith graph duration | 21.89 seconds |
+| Application-reported investigation duration | 22.32 seconds (a wider measurement boundary) |
+| Model span durations | 7.55 and 12.79 seconds |
+| Read-tool durations: logs / test results / comparable history | 0.21 / 0.16 / 0.64 seconds |
+| LangSmith estimated model cost | $0.02393; an estimate, not a reconciled Fireworks bill |
+
+![JUnit result returned by the read-only tool](docs/screenshots/langsmith-tool-result.png)
+
+The selected tool result reports four assertions and one failure. The second model call receives this evidence before producing findings; the model cannot replace the test verdict or mark the untested positions service healthy.
+
+<details>
+<summary>More trace evidence: investigation history and earlier preview run</summary>
+
+![Investigation trace history](docs/screenshots/langsmith-runs.png)
+
+The history helps locate investigations and compare individual executions. A completed trace alone does not prove a correct answer or successful diagnostic run.
+
+![Earlier workspace investigation trace](docs/screenshots/langsmith-trace.png)
+
+</details>
+
+LangSmith is used for **tracing**, with prompts, responses, tool evidence, tokens and timing. No LangSmith evaluation dataset, judge or experiment scores have been configured. The 31 application tests are a separate validation layer. These individual runs do not establish statistical accuracy, reliability or p95 latency. See [observability and data boundaries](docs/OBSERVABILITY.md) and [evaluation coverage](docs/EVALUATION.md).
 
 ## Submission artifacts
 
