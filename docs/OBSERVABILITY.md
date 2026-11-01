@@ -25,3 +25,9 @@ Validated October 31, 2026 (America/New_York). Trace ID: `3bff4133-0c2a-468e-9a6
 LangSmith supplies trace timings, token usage and errors. Provider billing is authoritative for cost. An OpenAI-compatible Fireworks model may not have automatic pricing configured, so an absent/zero cost field is not evidence of free inference. One trace is acceptance evidence, not a p95 latency or reliability benchmark.
 
 References: https://docs.langchain.com/langsmith/trace-with-langgraph and https://docs.langchain.com/langsmith/create-account-api-key .
+
+## Published app validation
+
+On November 1, 2026, the published Reserved VM app passed its public health check (HTTP 200), rejected unauthenticated API access, accepted owner form sign-in with a Secure session cookie, and loaded real Jenkins build #3 through the authenticated mini connection. A production AI investigation completed with AI_COMPLETE in 2 model calls, 4,277 reported tokens and 22.32 seconds. The verdict remained CHECKS_FAILED and positions remained NOT_TESTED. LangSmith read-back confirmed a completed root trace with no root error and nested spans. No diagnostic was approved or triggered during publishing validation.
+
+Published URL: https://change-guardian.replit.app/ . Provider billing is separate from observed token usage.

@@ -20,6 +20,6 @@ Keep the public package separate from ignored runtime credentials, exported pers
 
 - Application suite: 31 tests passed again.
 - Reviewer walkthrough: docs/WALKTHROUGH.md includes exact flow, on-demand reconciliation and code reading order.
-- Public GitHub repository: owner explicitly approved public code/documentation/synthetic screenshots; upload validation pending.
-- Replit published deployment: pending configuration and pricing review; workspace preview is not a published deployment.
+- Public GitHub repository: owner explicitly approved public code/documentation/synthetic screenshots; uploaded and verified: https://github.com/kdhandapani-hub/change-guardian .
+- Replit published deployment: published November 1, 2026 at https://change-guardian.replit.app/ on the owner-approved Reserved VM; health, owner login, protected API, real Jenkins evidence, AI investigation and LangSmith trace read-back validated.
 - Recording and reviewer access to Google Doc remain outstanding.

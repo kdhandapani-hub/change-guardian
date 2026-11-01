@@ -1,6 +1,6 @@
 # Architecture decisions — as built
 
-The working system uses one pipeline and one agent. The UI/backend runs in a Replit development workspace; Jenkins, its native MCP Server plugin, Postman CLI and synthetic APIs run on an M4 Mac mini. The mini initiates an ngrok tunnel. Cloudflare was considered earlier and is not the deployed connector.
+The working system uses one pipeline and one agent. The UI/backend is published on a Replit Reserved VM at https://change-guardian.replit.app/; Jenkins, its native MCP Server plugin, Postman CLI and synthetic APIs run on an M4 Mac mini. The mini initiates an ngrok tunnel. Cloudflare was considered earlier and is not the deployed connector.
 
 ## Ownership and boundaries
 
@@ -34,7 +34,7 @@ ngrok terminates HTTPS and is trusted with synthetic payloads and dedicated API 
 
 Service and status filters operate on the selected build. Overview metrics retain the whole run's context. Needs attention includes failed and unverified services. Recent failures shows failures in the loaded run, not an enterprise incident stream; severity is not classified. This keeps failures and coverage gaps visible without inventing criticality.
 
-See the [C4 diagrams](../outputs/Change-Guardian-C4-Architecture.md). Production publishing, SSO, rate-limited multi-user access and durable worker queues are future work.
+See the [C4 diagrams](../outputs/Change-Guardian-C4-Architecture.md). The Reserved VM provides one running backend instance. SSO, rate-limited multi-user access and durable worker queues remain future work.
 
 ## Investigation observability
 

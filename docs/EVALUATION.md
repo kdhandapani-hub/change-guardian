@@ -39,3 +39,9 @@ Live browser checks against mini build 3 verified Passed â†’ accounts; Failed â†
 A real Replit investigation of Jenkins build #3 (demo-qa, accounts/payments, smoke) completed with AI_COMPLETE: 2 model calls, 4,154 reported tokens and 19.38 seconds. LangSmith read-back confirmed the completed root run, no root/child errors, two model spans and all three read-tool spans (logs, tests, comparable history), with matching scope metadata. The immutable verdict remained CHECKS_FAILED and positions remained NOT_TESTED.
 
 The LangSmith API returned end_time and error=null; all 11 recorded spans, including the root, had no errors. This acceptance trace was run from the Replit shell against the same backend investigation code and real mini evidence. The managed dashboard workflow was restarted separately with the saved tracing secret enabled. Trace export is not an approval/execution permission or a new agent. Missing automatic Fireworks pricing is not evidence of zero billing.
+
+## Published app validation
+
+On November 1, 2026, the published Reserved VM app passed its public health check (HTTP 200), rejected unauthenticated API access, accepted owner form sign-in with a Secure session cookie, and loaded real Jenkins build #3 through the authenticated mini connection. A production AI investigation completed with AI_COMPLETE in 2 model calls, 4,277 reported tokens and 22.32 seconds. The verdict remained CHECKS_FAILED and positions remained NOT_TESTED. LangSmith read-back confirmed a completed root trace with no root error and nested spans. No diagnostic was approved or triggered during publishing validation.
+
+Published URL: https://change-guardian.replit.app/ . Provider billing is separate from observed token usage.

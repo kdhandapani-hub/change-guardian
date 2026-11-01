@@ -1,6 +1,6 @@
 # Change Guardian — C4 architecture, as built
 
-Validated October 31, 2026. Replit workspace preview + PostgreSQL + authenticated ngrok + Mac mini execution. An always-on Replit deployment has not been published. Historical Cloudflare plans are superseded.
+Updated November 1, 2026. Replit Reserved VM + production PostgreSQL + authenticated ngrok + Mac mini execution. Published app: https://change-guardian.replit.app/ . Historical Cloudflare plans are superseded.
 
 ## Level 1 — system context
 
@@ -29,7 +29,7 @@ C4Context
 C4Container
   title Change Guardian — Containers and Deployment
   Person(user, "Owner", "Authenticated reviewer")
-  System_Boundary(replit, "Replit development workspace") {
+  System_Boundary(replit, "Replit Reserved VM deployment") {
     Container(ui, "Dashboard", "HTML / CSS / JavaScript", "Service/status views, evidence and approval review")
     Container(backend, "Backend and one agent", "Python / LangGraph / MCP client", "Evidence gate, investigation and approval executor")
   }

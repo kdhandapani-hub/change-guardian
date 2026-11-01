@@ -34,7 +34,7 @@ flowchart LR
 
 [C4 diagrams](outputs/Change-Guardian-C4-Architecture.md) · [Architecture decisions](docs/ARCHITECTURE.md) · [Setup](docs/SETUP.md) · [Validation](docs/EVALUATION.md) · [Reviewer walkthrough](docs/WALKTHROUGH.md)
 
-The working cloud app is a **Replit workspace preview**, not an always-on published deployment. The Mac mini simulates on-premises execution. No production organization systems are connected. ngrok is a trusted TLS-terminating intermediary; gateway and Jenkins authentication are independent.
+The app is published at **https://change-guardian.replit.app/** on a Replit Reserved VM. Owner sign-in is required; credentials are supplied privately. The Mac mini simulates on-premises execution. No production organization systems are connected. ngrok is a trusted TLS-terminating intermediary; gateway and Jenkins authentication are independent.
 
 ## Quick start: no credentials required
 
@@ -75,6 +75,7 @@ Local dashboard: `http://127.0.0.1:8090/`. Build numbers belong to their Jenkins
 | Mini build 5: approved payments diagnostic, parent 3 | Expected failure reproduced; request ID linked |
 | LangSmith persisted trace, build 3 | 2 model spans + 3 read tools; 4,154 tokens; 19.38 seconds; no trace errors |
 | Fireworks investigation from Replit, build 3 | AI_COMPLETE; 2 calls, 4,172 reported tokens, 15.65 seconds |
+| Published app investigation, November 1 | AI_COMPLETE; 2 calls, 4,277 tokens, 22.32 seconds; health/login/Jenkins access verified |
 | Application tests | 31 passing tests; model doubles are separate from live inference |
 
 These are individual acceptance observations, not a statistical reliability benchmark. Provider dollar cost and p95 latency were not measured. [Full evaluation and limitations](docs/EVALUATION.md).
